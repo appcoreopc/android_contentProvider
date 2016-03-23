@@ -34,15 +34,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnNotify = (Button) findViewById(R.id.btnNotify);
+        btnNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // triggers notification //
+                ContentResolver resolver = getBaseContext().getContentResolver();
+                resolver.notifyChange(ContentProviderConstant.CONTENT_URI, null);
+            }
+        });
+
+
         Button btnGetContent = (Button) findViewById(R.id.btnTryResolve);
         btnGetContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ContentResolver resolver = getBaseContext().getContentResolver();
                 resolver.query(ContentProviderConstant.CONTENT_URI, null, "", null, "");
-                //resolver.insert(ContentProviderConstant.CONTENT_URI, new ContentValues());
-                resolver.notifyChange(ContentProviderConstant.CONTENT_URI, null);
-
             }
         });
 

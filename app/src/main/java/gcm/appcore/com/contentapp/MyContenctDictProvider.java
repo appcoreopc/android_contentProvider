@@ -35,7 +35,6 @@ public class MyContenctDictProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-
         String[] columns = new String[] { "_id", "item"};
         MatrixCursor matrixCursor = new MatrixCursor(columns);
         matrixCursor.addRow(new Object[] {"1", "SqlDataReader"});
