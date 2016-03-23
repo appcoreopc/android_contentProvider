@@ -21,7 +21,7 @@
 
         <provider
             android:name=".MyContenctDictProvider"
-            android:authorities="vogel.appcore.com.contentapp"
+            android:authorities="gcm.appcore.com.contentapp"
             android:exported="true"></provider>
     </application>
 </manifest>

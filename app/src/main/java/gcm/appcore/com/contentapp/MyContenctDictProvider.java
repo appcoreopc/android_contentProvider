@@ -52,7 +52,7 @@ public class MyContenctDictProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        return null;
+        return ContentProviderConstant.CONTENT_URI;
     }
 
     @Override

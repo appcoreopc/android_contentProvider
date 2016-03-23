@@ -1,9 +1,11 @@
 package gcm.appcore.com.contentapp;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ContentResolver resolver = getBaseContext().getContentResolver();
                 resolver.query(ContentProviderConstant.CONTENT_URI, null, "", null, "");
+                //resolver.insert(ContentProviderConstant.CONTENT_URI, new ContentValues());
+                resolver.notifyChange(ContentProviderConstant.CONTENT_URI, null);
+
             }
         });
 
@@ -51,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Handler myhander = new Handler();
+        getContentResolver().registerContentObserver(ContentProviderConstant.CONTENT_URI,
+                true, new DictContentObserver(myhander));
     }
 
     @Override
